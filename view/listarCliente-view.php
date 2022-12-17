@@ -1,7 +1,7 @@
 <?php
 include 'assets/encabezado.php'; ?>
     <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">BIENVENIDO AL REGISTRO DE DATOS DE PRODUCTOS!</h4>
+        <h4 class="alert-heading">BIENVENIDO AL REGISTRO DE DATOS DE CLIENTES!</h4>
 
         <hr>
         <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
@@ -12,7 +12,7 @@ include 'assets/encabezado.php'; ?>
     <div class="vertabla"></div>
 
    
-<script src="./js/Producto.js"></script>
+<script src="./js/Cliente.js"></script>
 
 <script>
     cargar();
@@ -21,7 +21,7 @@ include 'assets/encabezado.php'; ?>
         $("#loader").fadeIn('slow');
         $.ajax({
             type: 'GET',
-            url: './Controllers/ProductoController.php?consult=true',
+            url: './Controllers/ClienteController.php?consult=true',
             beforeSend: function(objeto) {
                 $('#loader').html('<h3>Cargando...</h3>');
             },
@@ -45,7 +45,7 @@ include 'assets/encabezado.php'; ?>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PRODCUTOS</h5>
+                <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CLIENTES</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -57,23 +57,14 @@ include 'assets/encabezado.php'; ?>
                         <input type="text" class="form-control" id="nombres" name="nombres">
                     </div>
                     <div class="mb-3">
-                        <label for="descripcion" class="col-form-label">Descripción:</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="categoria" class="col-form-label">Categoría:</label>
-                        <select name="categoria" id="categoria" class="form-control">
-                            <option value="0">--Seleccione</option>
-                            <option value="Laptops">Laptops</option>
-                            <option value="Tecnología">Tecnología</option>
-                        </select>
+                        <label for="descripcion" class="col-form-label">Dirección:</label>
+                        <textarea class="form-control" id="direccion" name="direccion"></textarea>
                     </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span class="fas fa-times"></span> Close</button>
-                <button type="submit" class="btn btn-success"><span class="fas fa-save"></span> Guardar Producto</button>
+                <button type="submit" class="btn btn-success"><span class="fas fa-save"></span> Guardar</button>
             </div>
 
             </form>
@@ -87,7 +78,7 @@ include 'assets/encabezado.php'; ?>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">EDITAR PRODCUTOS</h5>
+                <h5 class="modal-title" id="exampleModalLabel">EDITAR CLIENTES</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -99,23 +90,16 @@ include 'assets/encabezado.php'; ?>
                         <input type="text" class="form-control" id="nombresedit" name="nombresedit">
                     </div>
                     <div class="mb-3">
-                        <label for="descripcionedit" class="col-form-label">Descripción:</label>
-                        <textarea class="form-control" id="descripcionedit" name="descripcionedit"></textarea>
+                        <label for="direccionedit" class="col-form-label">Descripción:</label>
+                        <textarea class="form-control" id="direccionedit" name="direccionedit"></textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="categoriaedit" class="col-form-label">Categoría:</label>
-                        <select name="categoriaedit" id="categoriaedit" class="form-control">
-                            <option value="0">--Seleccione</option>
-                            <option value="Laptops">Laptops</option>
-                            <option value="Tecnología">Tecnología</option>
-                        </select>
-                    </div>
+                
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span class="fas fa-times"></span> Close</button>
-                <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Editar Producto</button>
+                <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Editar</button>
             </div>
 
             </form>

@@ -1,10 +1,10 @@
 <?php
 
-require_once '../Model/Producto.php';
+require_once '../Model/Cliente.php';
 
 if (isset($_GET['consult'])) {
     //Mostrar Usuarios
-    $ProductoModel = new Producto(); ?>
+    $ClienteModel = new Cliente(); ?>
 	<script>
 		$(document).ready(function() {
 			$('#example').DataTable({
@@ -20,34 +20,35 @@ if (isset($_GET['consult'])) {
 			<tr>
 				<th>ID</th>
 				<th>Nombre</th>
-				<th>Descripción</th>
-				<th>Categoria</th>
+				<th>Dirección</th>
 				<th width="8%">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($ProductoModel->MostrarProducto() as $data) { ?>
+			<?php foreach ($ClienteModel->MostrarCliente() as $data) { ?>
 
 				<tr><input type="hidden" id="nombre_<?php echo $data[
-        'id'
+        'idcliente'
     ]; ?>" value="<?php echo $data['nombre']; ?>">
-					<input type="hidden" id="descripcion_<?php echo $data[
-         'id'
-     ]; ?>" value="<?php echo $data['descripcion']; ?>">
-					<input type="hidden" id="categoria_<?php echo $data[
-         'id'
-     ]; ?>" value="<?php echo $data['categoria']; ?>">
-					<td><?php echo $data['id']; ?></td>
+
+
+					<input type="hidden" id="direccion_<?php echo $data[
+         'idcliente'
+     ]; ?>" value="<?php echo $data['direccion']; ?>">
+
+
+
+
+					<td><?php echo $data['idcliente']; ?></td>
 					<td><?php echo $data['nombre']; ?></td>
-					<td><?php echo $data['descripcion']; ?></td>
-					<td><?php echo $data['categoria']; ?></td>
+					<td><?php echo $data['direccion']; ?></td>
 					<td>
 						<div class="btn-group" role="group" aria-label="Basic mixed styles example">
 							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModaledit" data-bs-whatever="@mdo" onclick="editar(<?php echo $data[
-           'id'
+           'idcliente'
        ]; ?>)"><span class="fas fa-edit"></span></button>
 							<button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $data[
-           'id'
+           'idcliente'
        ]; ?>)"><span class="fas fa-trash"></span></button>
 
 						</div>
@@ -62,41 +63,40 @@ if (isset($_GET['consult'])) {
 
 <?php
 } elseif (isset($_GET['action']) && $_GET['action'] == 'save') {
-    $ProductoModel = new Producto();
+    $ClienteModel = new Cliente();
 
-    $ProductoModel->nombre = htmlentities($_POST['nombres']);
-    $ProductoModel->descripcion = htmlentities($_POST['descripcion']);
-    $ProductoModel->categoria = htmlentities($_POST['categoria']);
+    $ClienteModel->nombre = htmlentities($_POST['nombres']);
+    $ClienteModel->direccion = htmlentities($_POST['direccion']);
 
-    $prod = $ProductoModel->RegistrarProducto($ProductoModel);
+    $client = $ClienteModel->RegistrarCliente($ClienteModel);
 
-    if ($prod) {
+    if ($client) {
         echo 'exito';
     } else {
         echo 'error';
     }
 } elseif (isset($_GET['action']) && $_GET['action'] == 'eliminar') {
-    $ProductoModel = new Producto();
+    $ClienteModel = new Cliente();
 
-    $ProductoModel->id = htmlentities($_GET['id']);
+    $ClienteModel->idcliente = htmlentities($_GET['id']);
 
-    $prod = $ProductoModel->eliminarProducto($ProductoModel);
+    $client = $ClienteModel->eliminarCliente($ClienteModel);
 
-    if ($prod) {
+    if ($client) {
         echo 'exito';
     } else {
         echo 'error';
     }
 } elseif (isset($_GET['action']) && $_GET['action'] == 'edit') {
-    $ProductoModel = new Producto();
-    $ProductoModel->id = htmlentities($_POST['idedit']);
-    $ProductoModel->nombre = htmlentities($_POST['nombresedit']);
-    $ProductoModel->descripcion = htmlentities($_POST['descripcionedit']);
-    $ProductoModel->categoria = htmlentities($_POST['categoriaedit']);
+    $ClienteModel = new Cliente();
 
-    $prod = $ProductoModel->EditarProducto($ProductoModel);
+    $ClienteModel->idcliente = htmlentities($_POST['idedit']);
+    $ClienteModel->nombre = htmlentities($_POST['nombresedit']);
+    $ClienteModel->direccion = htmlentities($_POST['direccionedit']);
 
-    if ($prod) {
+    $client = $ClienteModel->EditarCliente($ClienteModel);
+
+    if ($client) {
         echo 'exito';
     } else {
         echo 'error';

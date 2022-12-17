@@ -12,7 +12,6 @@ include "assets/encabezado.php"
 </div>
 
 
-
 <?php
 include "assets/footer.php"
 
